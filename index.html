@@ -9,19 +9,33 @@
     <script src="https://unpkg.com/aframe-extras.tube@%5E3.5.x/dist/aframe-extras.tube.min.js"></script>
     
     <script>
+      var totalScore = 100;
+      function updateScore(score){
+        var scoreEl = document.querySelector('#scoreMsg');
+        scoreEl.setAttribute('text', {
+                    align:'center',
+                    width:3,
+                    wrapCount:100,
+                    color:'black',
+                    value: 'Score: ' + score
+                  });
+      }
+      
       AFRAME.registerComponent('collider-check', {
         init: function() {
           var timeOut;
           this.el.addEventListener('raycaster-intersected', function(e) {
-            var collMsg = document.querySelector("#msg2");
-            clearTimeout(timeOut);
-            collMsg.setAttribute('text', {
-              align:'center',
-              width:3,
-              wrapCount:100,
-              color:'red',
-              value:'You have hit ' + e.target.id
+              var collMsg = document.querySelector("#msg2");
+              clearTimeout(timeOut);
+              collMsg.setAttribute('text', {
+                align:'center',
+                width:3,
+                wrapCount:100,
+                color:'red',
+                value:'You have hit ' + e.target.id
             });
+            totalScore -= 10;
+            updateScore(totalScore);
             
             timeOut = setTimeout(function(){
               collMsg.setAttribute('text', {
@@ -35,6 +49,7 @@
           });
         }
       });
+      
     </script>
   </head>
   <body class="a-body ">
@@ -44,40 +59,40 @@
       <a-assets>
         <a-asset-item id="car1-obj" src="assets/obj/veh_car1.obj"></a-asset-item>
         <a-asset-item id="car1-mtl" src="assets/obj/veh_car1.mtl"></a-asset-item>
-      </a-assets>
-      <a-assets>
         <a-asset-item id="car2-obj" src="assets/obj/veh_car2.obj"></a-asset-item>
         <a-asset-item id="car2-mtl" src="assets/obj/veh_car2.mtl"></a-asset-item>
-      </a-assets>
-      <a-assets>
         <a-asset-item id="chr-obj" src="assets/obj/chr_sports1.obj"></a-asset-item>
         <a-asset-item id="chr-mtl" src="assets/obj/chr_sports1.mtl"></a-asset-item>
-      </a-assets>
-      <a-assets>
         <a-asset-item id="driveway1-obj" src="assets/obj/obj_driveway3.obj"></a-asset-item>
         <a-asset-item id="driveway1-mtl" src="assets/obj/obj_driveway3.mtl"></a-asset-item>
-      </a-assets>
-      <a-assets>
         <a-asset-item id="sidewalk1-obj" src="assets/obj/obj_sidewalk1.obj"></a-asset-item>
         <a-asset-item id="sidewalk1-mtl" src="assets/obj/obj_sidewalk1.mtl"></a-asset-item>
-      </a-assets>
-      <a-assets>
         <a-asset-item id="base-obj" src="assets/obj/base_street1.obj"></a-asset-item>
         <a-asset-item id="base-mtl" src="assets/obj/base_street1.mtl"></a-asset-item>
-      </a-assets>
+        <img id="sky" src="https://img.gs/bbdkhfbzkk/2048x2048,stretch/http://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous" />
+      </a-assets> 
+      
+  
+
       
       
       <a-entity position="8 1.6 0" >
         <a-camera id="cam" user-height="1.6" wasd-controls="acceleration: 100" >
           
           
-          <a-sphere raycaster="objects: .collidable; far: 0.1" geometry="radius:0.5"></a-sphere>
-          <a-entity id="msg1" position="0 1 -1.5"></a-entity>
-          <a-entity id="msg2" position="0 0.9 -1.5"></a-entity>
+          <a-sphere raycaster="objects: .collidable; far: 0.4" geometry="radius:0.5"></a-sphere>
+          <a-entity raycaster="objects: .collidable; far: 0.4" rotation="0 90 0"></a-entity>
+          <a-entity raycaster="objects: .collidable; far: 0.4" rotation="0 270 0"></a-entity>
+          <a-entity id="scoreMsg" position="0 1 -1.5" ></a-entity>
+          <a-entity id="msg1" position="0 0.9 -1.5"></a-entity>
+          <a-entity id="msg2" position="0 0.8 -1.5"></a-entity>
+          
            
         </a-camera>
         
+      
       </a-entity>
+      
       
       <a-entity id="obj-entity1" class="collidable" position="-2.5 0.5 -30" geometry="primitive: box" rotation="0 180 0" scale="0.2 0.2 0.2" obj-model="obj: #car1-obj; mtl: #car1-mtl" animation="property: position; dir: forward; dur: 5000; to: -2.5 0.5 20; loop: true"></a-entity> 
       <a-entity id="obj-entity2" class="collidable" position="2.5 0.5 -30" geometry="primitive: box" rotation="0 180 0" scale="0.2 0.2 0.2" obj-model="obj: #car2-obj; mtl: #car2-mtl" animation="property: position; dir: forward; dur: 6000; to: 2.5 0.5 20; loop: true"></a-entity>
