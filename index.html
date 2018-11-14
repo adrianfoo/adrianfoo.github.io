@@ -1,112 +1,72 @@
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
 
-    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-animation-component@3.2.1/dist/aframe-animation-component.min.js"></script>
-    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
-    <script src="https://unpkg.com/aframe-extras.ocean@%5E3.5.x/dist/aframe-extras.ocean.min.js"></script>
-    <script src="https://unpkg.com/aframe-gradient-sky@1.0.4/dist/gradientsky.min.js"></script>
-    <script src="https://unpkg.com/aframe-extras.tube@%5E3.5.x/dist/aframe-extras.tube.min.js"></script>
-    
-    <script>
-      var totalScore = 100;
-      function updateScore(score){
-        var scoreEl = document.querySelector('#scoreMsg');
-        scoreEl.setAttribute('text', {
-                    align:'center',
-                    width:3,
-                    wrapCount:100,
-                    color:'black',
-                    value: 'Score: ' + score
-                  });
-      }
-      
-      AFRAME.registerComponent('collider-check', {
-        init: function() {
-          var timeOut;
-          this.el.addEventListener('raycaster-intersected', function(e) {
-              var collMsg = document.querySelector("#msg2");
-              clearTimeout(timeOut);
-              collMsg.setAttribute('text', {
-                align:'center',
-                width:3,
-                wrapCount:100,
-                color:'red',
-                value:'You have hit ' + e.target.id
-            });
-            totalScore -= 10;
-            updateScore(totalScore);
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap Login Form Template</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+    </head>
+
+    <body>
+        <!-- Top content -->
+        <div class="top-content">
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h3>Login to our Safe-Riding VR Application!</h3>
+                            		<p>Enter your username and password to log on:</p>
+                        		</div>
+                        		<div class="form-top-right">
+                        			<i class="fa fa-lock"></i>
+                        		</div>
+                            </div>
+                            <div class="form-bottom">
+			                    <form role="form" action="" method="post" class="login-form">
+			                    	<div class="form-group">
+			                    		<label class="sr-only" for="form-username">Username</label>
+			                        	<input type="text" name="form-username" placeholder="Username" class="form-username form-control" id="form-username">
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="form-password">Password</label>
+			                        	<input type="password" name="form-password" placeholder="Password" class="form-password form-control" id="form-password">
+			                        </div>
+			                        <input type="button" value="Login" id="submit" onclick="validate()" class="btn"></button>
+			                    </form>
+		                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            timeOut = setTimeout(function(){
-              collMsg.setAttribute('text', {
-              align:'center',
-              width:3,
-              wrapCount:100,
-              color:'red',
-              value:''
-              });
-            }, 3000);
-          });
-        }
-      });
-      
-    </script>
-  </head>
-  <body class="a-body ">
-    
-    
-    <a-scene class="fullscreen" collider-check>
-      <a-assets>
-        <a-asset-item id="car1-obj" src="assets/obj/veh_car1.obj"></a-asset-item>
-        <a-asset-item id="car1-mtl" src="assets/obj/veh_car1.mtl"></a-asset-item>
-        <a-asset-item id="car2-obj" src="assets/obj/veh_car2.obj"></a-asset-item>
-        <a-asset-item id="car2-mtl" src="assets/obj/veh_car2.mtl"></a-asset-item>
-        <a-asset-item id="chr-obj" src="assets/obj/chr_sports1.obj"></a-asset-item>
-        <a-asset-item id="chr-mtl" src="assets/obj/chr_sports1.mtl"></a-asset-item>
-        <a-asset-item id="driveway1-obj" src="assets/obj/obj_driveway3.obj"></a-asset-item>
-        <a-asset-item id="driveway1-mtl" src="assets/obj/obj_driveway3.mtl"></a-asset-item>
-        <a-asset-item id="sidewalk1-obj" src="assets/obj/obj_sidewalk1.obj"></a-asset-item>
-        <a-asset-item id="sidewalk1-mtl" src="assets/obj/obj_sidewalk1.mtl"></a-asset-item>
-        <a-asset-item id="base-obj" src="assets/obj/base_street1.obj"></a-asset-item>
-        <a-asset-item id="base-mtl" src="assets/obj/base_street1.mtl"></a-asset-item>
-        <img id="sky" src="https://img.gs/bbdkhfbzkk/2048x2048,stretch/http://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous" />
-      </a-assets> 
-      
-  
+        </div>
 
-      
-      
-      <a-entity position="8 1.6 0" >
-        <a-camera id="cam" user-height="1.6" wasd-controls="acceleration: 100" >
-          
-          
-          <a-sphere raycaster="objects: .collidable; far: 0.4" geometry="radius:0.5"></a-sphere>
-          <a-entity raycaster="objects: .collidable; far: 0.4" rotation="0 90 0"></a-entity>
-          <a-entity raycaster="objects: .collidable; far: 0.4" rotation="0 270 0"></a-entity>
-          <a-entity id="scoreMsg" position="0 1 -1.5" ></a-entity>
-          <a-entity id="msg1" position="0 0.9 -1.5"></a-entity>
-          <a-entity id="msg2" position="0 0.8 -1.5"></a-entity>
-          
-           
-        </a-camera>
+        <!-- Javascript -->
+        <script src="assets/js/loginJS.js"></script>
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
         
-      
-      </a-entity>
-      
-      
-      <a-entity id="obj-entity1" class="collidable" position="-2.5 0.5 -30" geometry="primitive: box" rotation="0 180 0" scale="0.2 0.2 0.2" obj-model="obj: #car1-obj; mtl: #car1-mtl" animation="property: position; dir: forward; dur: 5000; to: -2.5 0.5 20; loop: true"></a-entity> 
-      <a-entity id="obj-entity2" class="collidable" position="2.5 0.5 -30" geometry="primitive: box" rotation="0 180 0" scale="0.2 0.2 0.2" obj-model="obj: #car2-obj; mtl: #car2-mtl" animation="property: position; dir: forward; dur: 6000; to: 2.5 0.5 20; loop: true"></a-entity>
-      <a-entity id="obj-entity3" class="collidable" position="7 0.55 -30" geometry="primitive: box" rotation="0 0 0" scale="0.15 0.15 0.15" obj-model="obj: #chr-obj; mtl: #chr-mtl" animation="property: position; dir: forward; dur: 30000; to: 7 0.55 20; loop: true"></a-entity> 
-      <!-- 
-      <a-plane position="-6 0.001 -4" rotation="-90 0 0" width="10" height="10" color="black" material="" geometry="width:5;height:50"></a-plane>
-      <a-plane position="0 0.001 -4" rotation="-90 0 0" width="10" height="10" color="grey" material="" geometry="width:3;height:50"></a-plane>
-      -->
-      <a-plane position="8 0.5 -4" rotation="0 0 0" scale="0.3 0.1 3.6" obj-model="obj: #sidewalk1-obj; mtl: #sidewalk1-mtl"></a-plane>
-      <a-plane position="0 0 -4" rotation="0 90 0" scale="1 0.5 0.5" obj-model="obj: #base-obj; mtl: #base-mtl"></a-plane>
-      <a-sky color="#ECECEC" material="" geometry=""></a-sky>
-    </a-scene>
-    
-    
-    <script src="index.js"></script>
-  </body>
+        
+    </body>
 </html>
