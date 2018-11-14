@@ -10,6 +10,16 @@
     
     <script>
       var totalScore = 100;
+
+      
+      function gameover(score){
+        if(score <= 0){
+          window.location.replace("gameover.html");
+        }
+        return;
+      }
+      
+
       function updateScore(score){
         var scoreEl = document.querySelector('#scoreMsg');
         scoreEl.setAttribute('text', {
@@ -19,6 +29,9 @@
                     color:'black',
                     value: 'Score: ' + score
                   });
+
+        gameover(score);
+
       }
       
       AFRAME.registerComponent('collider-check', {
