@@ -1,3 +1,4 @@
+document.querySelector("#gameover").setAttribute("visible",false);
 updateScore(totalScore);
 
 var msg = document.querySelector("#msg1");
