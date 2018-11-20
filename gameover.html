@@ -1,0 +1,49 @@
+<html>
+  <head>
+
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script>
+      
+      AFRAME.registerComponent('collider-check-over', {
+        init: function() {
+          var material;
+          this.el.addEventListener('raycaster-intersected', function(e) {
+            console.log("player collided " + e.target.id);
+            material = e.target.getAttribute('material');
+            e.target.setAttribute('material', {
+              color: 'green',
+              shader: 'flat'
+            });
+            
+          });
+          this.el.addEventListener('raycaster-intersected-cleared', function(e) {
+            console.log("player left");
+            e.target.setAttribute('material', material);
+            
+          });
+        }
+      });
+    </script>
+  </head>
+  <body class="a-body ">
+    
+    <a-scene id="gameover" collider-check-over> 
+      <a-entity position="0 0 0">
+        <a-camera user-height="1.6" wasd-controls-enabled="false" look-controls="pointerLockEnabled: true">
+          <a-sphere raycaster="objects: .collidable" geometry="radius:0.1"></a-sphere>
+          <a-cursor color ="white" ></a-cursor>    
+        </a-camera>
+      </a-entity>
+      
+      <a-entity position="0 0.3 -0.7" text="align: center; width: 10; wrapCount: 100; color: red; value: GAMEOVER"></a-entity> 
+      <a-box id="retry" class="collidable" position="-0.2 0.1 -0.7" scale="0.2 0.15 0.1" rotation="0 0 0"  material="color: yellow; shader: flat;">
+        <a-entity text="align: center; width: 20; wrapCount: 100; color: black; value: Retry" position="0 0 0.5"></a-entity>
+      </a-box>
+      <a-box id="back" class="collidable" position="0.2 0.1 -0.7" scale="0.2 0.15 0.1" rotation="0 0 0" material="color: red; shader: flat;">
+        <a-entity text="align: center; width: 20; wrapCount: 100; color: black; value: Back" position="0 0 0.5"></a-entity>
+      </a-box>
+
+      <a-sky color="black" material="" geometry=""></a-sky>
+    </a-scene>
+  </body>
+</html>
