@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap Login Form Template</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+    </head>
+
+    <body onLoad="admin_page_load()">
+        <!-- Top content -->
+        <div class="top-content">
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h3>Welcome Player!</h3>
+                            		<p>Navigate using the bottom button</p>
+                        		</div>
+                        		<div class="form-top-right">
+                        			<span class="glyphicon glyphicon-th-large"></span>
+                        		</div>
+                            </div>
+                            <div class="form-bottom">
+                                <form role="form" action="" method="post" class="login-form">
+                                    <h4>Set rate of vehicle being generated: </h4>
+                                    <select id="mod_veh" name="selectAvgVehicle">
+                                        <option value="100" selected="selected">100%</option>
+                                        <option value="150">150%</option>
+                                        <option value="200">200%</option>
+                                    </select>
+                                    <br>
+                                    <h4>Set rate of pedestrian being generated: </h4>
+                                    <select id="mod_ped" name="selectAvgPedestrian">
+                                        <option value="100" selected="selected">100%</option>
+                                        <option value="150">150%</option>
+                                        <option value="200">200%</option>
+                                    </select>
+                                    <h4>Modify Environment: </h4>
+                                    <select id="mod_env" name="selectEnvironment">
+                                        <option value="day_time" selected="selected">Day</option>
+                                        <option value="night_time">Night</option>
+                                    </select>
+                                    <br>
+                                    <br>
+                                    <input type="button" value="Logout" id="navigate_home5" onclick="navigate_index()" class="btn">
+                                    <input type="button" value="Modify Game Setting" id="navigate_home6" onclick="modify_Game_environment()" class="btn">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Javascript -->
+        <script src="assets/js/player_menu.js"></script>
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/scripts_player_admin_background.js"></script>
+        <script src="assets/js/admin_modify_level.js" type="text/javascript"></script>
+        <script src="assets/js/admin_page_load.js" type="text/javascript"></script>
+    </body>
+</html>
