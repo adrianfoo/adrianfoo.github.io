@@ -7,25 +7,36 @@ var cam = document.querySelector('#cam');
 
 var pos = cam.getAttribute('position');
 cam.addEventListener('componentchanged', function (evt) {
-  //console.log('CAMERA x/y:', pos.x, pos.y);
-  if(pos.x < -0.5){
+  //console.log('CAMERA x/y/z:', pos.x, pos.y, pos.z);
+  if(pos.x < -2){
     msg.setAttribute('text', {
       align:'center',
       width:3,
       wrapCount:100,
       color:'red',
-      value:'Stay on the side of the road'
+      value:'Stay on the path'
     });
     totalScore -= 1;
     updateScore(totalScore);
   }
-  else if(pos.x > 0.5){
+  else if((pos.x > 2 && pos.x < 14) && (pos.z > -18.5 || pos.z < -22.5)){
     msg.setAttribute('text', {
       align:'center',
       width:3,
       wrapCount:100,
       color:'red',
-      value:'Stay on the side of the road'
+      value:'Stay on the path'
+    });
+    totalScore -= 1;
+    updateScore(totalScore);
+  }
+  else if(pos.x > 18){
+    msg.setAttribute('text', {
+      align:'center',
+      width:3,
+      wrapCount:100,
+      color:'red',
+      value:'Stay on the path'
     });
     totalScore -= 1;
     updateScore(totalScore);
