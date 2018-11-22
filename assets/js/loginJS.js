@@ -9,12 +9,12 @@ function validate(){
     }
     else if ( username == "admin" && password == "admin123"){
         alert ("Admin Login successfully!");
-        window.location = "adminmenu.html"; // Redirecting to other page.
+        window.location = "admin_edit_environment.html"; // Redirecting to admin page.
         return false;
     }
     else if (username == "player" && password == "player123"){
         alert ("Player Login successfully!");
-        window.location = "scene1.html"; // Redirecting to other page.
+        window.location = "player_menu.html"; // Redirecting to player page.
         return false;
     }
     else{

@@ -7,82 +7,11 @@
     <script src="https://unpkg.com/aframe-extras.ocean@%5E3.5.x/dist/aframe-extras.ocean.min.js"></script>
     <script src="https://unpkg.com/aframe-gradient-sky@1.0.4/dist/gradientsky.min.js"></script>
     <script src="https://unpkg.com/aframe-extras.tube@%5E3.5.x/dist/aframe-extras.tube.min.js"></script>
-    
+    <script src="score.js"></script>
     <script>
       var totalScore = 100;
-
-      
-      function gameover(score){
-        if(score <= 0){
-          document.querySelector('#cam').setAttribute("wasd-controls",{enabled: 'false'});
-          window.location.href = "gameover.html";
-        }
-        return;
-      }
-      
-
-      function updateScore(score){
-        var scoreEl = document.querySelector('#scoreMsg');
-        scoreEl.setAttribute('text', {
-                    align:'center',
-                    width:3,
-                    wrapCount:100,
-                    color:'black',
-                    value: 'Score: ' + score
-                  });
-
-        gameover(score);
-
-      }
-      
-      AFRAME.registerComponent('collider-check-game', {
-        init: function() {
-          var timeOut;
-          this.el.addEventListener('raycaster-intersected', function(e) {
-            var collMsg = document.querySelector("#msg2");
-            if(e.target.id != "clear"){
-              
-              clearTimeout(timeOut);
-              collMsg.setAttribute('text', {
-                align:'center',
-                width:3,
-                wrapCount:100,
-                color:'red',
-                value:'You have hit a ' + e.target.attributes.name.value
-              });
-              totalScore -= 10;
-              updateScore(totalScore);
-              
-              timeOut = setTimeout(function(){
-                collMsg.setAttribute('text', {
-                align:'center',
-                width:3,
-                wrapCount:100,
-                color:'red',
-                value:''
-                });
-              }, 3000);
-            }
-            else{
-              document.querySelector('#cam').setAttribute("wasd-controls",{enabled: 'false'});   
-              collMsg.setAttribute('text', {
-                align:'center',
-                width:3,
-                wrapCount:100,
-                color:'black',
-                value:'Stage Clear'
-              });
-              timeOut = setTimeout(function(){
-                window.location.href = "index.html";
-              }, 3000);
-            }
-            
-          });
-        }
-      });
-      
-
     </script>
+    <script src="collider-check.js"></script>
   </head>
   <body class="a-body ">
     
@@ -130,6 +59,6 @@
       <a-sky color="#ECECEC" material="" geometry=""></a-sky>
     </a-scene>
     
-    <script src="index.js"></script>
+    <script src="scene1.js"></script>
   </body>
 </html>
