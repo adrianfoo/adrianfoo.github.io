@@ -16,12 +16,21 @@
         <link rel="stylesheet" href="assets/css/style.css">
 
         <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="assets/ico/favicon.png">
+        <link rel="shortcut ico n" href="assets/ico/favicon.png">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 
+        <style>
+             #tableP{
+                font-size: 30px;
+                text-align:center;
+            }
+            th, td {
+                padding: 5px;
+            }
+        </style>
     </head>
 
     <body>
@@ -33,8 +42,18 @@
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                         	<div class="form-top">
                                     <div class="form-top-left">
-                                            <h3>Welcome Player!</h3>
-                                    <p>Navigate using the bottom button</p>
+                                        <h3>Welcome Player!</h3>
+                                        <p>Navigate using the bottom button</p>
+
+                                    <table border=1 width="400" id="scoreTable">
+                                        <tr>
+                                            <td><p id='tableP'><B><U>Position</U></B></p></td>
+                                            <td ><p id='tableP'><B><U>Score</U></B></p></td>
+                                        </tr>
+
+
+                                    </table>
+
                                     </div>
                                     <div class="form-top-right">
                                             <span class="glyphicon glyphicon-th-large"></span>
@@ -49,16 +68,42 @@
                     </div>
                 </div>
             </div>
-            
-        </div>
 
+        </div>
+        <script>
+            var scores=[73,58,18,94,25,74,25,85,11,27,41,91];
+            myScore= 91;
+            scores.push(myScore);
+            scores.sort(function(a, b){return b-a});
+
+            function myFunction() {
+                var i,count=1;
+                for (i = 0; i < 10; i++) {
+                    var table = document.getElementById("scoreTable");
+                    var row = table.insertRow(-1);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    if(scores[i] == myScore){
+                        cell1.innerHTML = "<p id='tableP'><font color=red>" + count +"</font></p>";
+                        cell2.innerHTML = "<p id='tableP'><font color=red>" + scores[i] +"</font></p>";
+                        myScore='';
+                    }
+                    else{
+                        cell1.innerHTML = "<p id='tableP'>" + count +"</font></p>";
+                        cell2.innerHTML = "<p id='tableP'>" + scores[i] +"</p>";
+                    }
+                    count+=1;
+                }
+            }
+            myFunction();
+        </script>
         <!-- Javascript -->
         <script src="assets/js/player_menu.js"></script>
         <script src="assets/js/jquery-1.11.1.min.js"></script>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.backstretch.min.js"></script>
         <script src="assets/js/scripts_player_admin_background.js"></script>
-        
-        
+
+
     </body>
 </html>
