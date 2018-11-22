@@ -9,14 +9,24 @@ function gameover(score){
 
 function updateScore(score){
   var scoreEl = document.querySelector('#scoreMsg');
-  scoreEl.setAttribute('text', {
+  if(document.querySelector('a-sky').getAttribute('color') == 'black'){
+    scoreEl.setAttribute('text', {
+              align:'center',
+              width:3,
+              wrapCount:100,
+              color:'white',
+              value: 'Score: ' + score
+            });
+  }
+  else{
+    scoreEl.setAttribute('text', {
               align:'center',
               width:3,
               wrapCount:100,
               color:'black',
               value: 'Score: ' + score
             });
-
+  }
   gameover(score);
 
 }

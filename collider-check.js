@@ -28,18 +28,29 @@ AFRAME.registerComponent('collider-check-game', {
             }
             else{
               document.querySelector('#cam').setAttribute("wasd-controls",{enabled: 'false'});   
-              collMsg.setAttribute('text', {
-                align:'center',
-                width:3,
-                wrapCount:100,
-                color:'black',
-                value:'Stage Clear'
-              });
+              if(document.querySelector('a-sky').getAttribute('color') == 'black'){
+                collMsg.setAttribute('text', {
+                          align:'center',
+                          width:3,
+                          wrapCount:100,
+                          color:'white',
+                          value: 'Stage Clear'
+                        });
+              }
+              else{
+                collMsg.setAttribute('text', {
+                  align:'center',
+                  width:3,
+                  wrapCount:100,
+                  color:'black',
+                  value:'Stage Clear'
+                });
+                
+              }
               timeOut = setTimeout(function(){
-                window.location.href = "player_score.html";
+                  window.location.href = "player_score.html";
               }, 3000);
             }
-            
           });
         }
       });

@@ -43,8 +43,12 @@
       </a-entity>
       
       
-      <a-entity id="obj-entity1" name="car" class="collidable" position="-2.5 0.5 -30" geometry="primitive: box" rotation="0 180 0" scale="0.2 0.2 0.2" obj-model="obj: #car1-obj; mtl: #car1-mtl" animation="property: position; dir: forward; dur: 5000; to: -2.5 0.5 20; loop: true"></a-entity> 
-      <a-entity id="obj-entity2" name="car" class="collidable" position="2.5 0.5 -30" geometry="primitive: box" rotation="0 180 0" scale="0.2 0.2 0.2" obj-model="obj: #car2-obj; mtl: #car2-mtl" animation="property: position; dir: forward; dur: 6000; to: 2.5 0.5 20; loop: true"></a-entity>
+      <a-entity id="obj-entity1" name="car" class="collidable" position="-2.5 0.5 -30" geometry="primitive: box" rotation="0 180 0" scale="0.2 0.2 0.2" obj-model="obj: #car1-obj; mtl: #car1-mtl" animation="property: position; dir: forward; dur: 5000; to: -2.5 0.5 20; loop: true">
+        <a-entity position="0 15 0" rotation="0 180 0" text="align: center; width: 100; wrapCount: 100; color: black; value: Avoid the Car"></a-entity> 
+      </a-entity> 
+      <a-entity id="obj-entity2" name="car" class="collidable" position="2.5 0.5 -30" geometry="primitive: box" rotation="0 180 0" scale="0.2 0.2 0.2" obj-model="obj: #car2-obj; mtl: #car2-mtl" animation="property: position; dir: forward; dur: 6000; to: 2.5 0.5 20; loop: true">
+        <a-entity position="0 15 0" rotation="0 180 0" text="align: center; width: 100; wrapCount: 100; color: black; value: Avoid the Car"></a-entity> 
+      </a-entity>
       <a-entity id="obj-entity3" name="person" class="collidable" position="7 0.55 -30" geometry="primitive: box" rotation="0 0 0" scale="0.15 0.15 0.15" obj-model="obj: #chr-obj; mtl: #chr-mtl" animation="property: position; dir: forward; dur: 30000; to: 7 0.55 20; loop: true">
         <a-entity position="0 15 0" text="align: center; width: 100; wrapCount: 100; color: black; value: Don't hit him!!!"></a-entity> 
       </a-entity> 
