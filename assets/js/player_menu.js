@@ -21,8 +21,15 @@ function navigate_home(){
 function navigate_game(){
     var level_select_html = document.getElementById("player_level_Selected");
     var level_selected = level_select_html.options[level_select_html.selectedIndex].value;
+    var veh_number = sessionStorage.getItem("modified_vehicle_no");
     if (level_selected=="level1"){
-        window.location = "scene1.html"; // Redirecting to scene 1
+        if(veh_number <= 100){
+           window.location = "scene1.html"; // Redirecting to scene 1
+        }
+        else{
+           window.location = "scene1_admin.html"; // Redirecting to edited scene 1
+        }
+        
     } else if(level_selected=="level2"){
         window.location = "scene2.html"; // Redirecting to scene 2
     } else if(level_selected=="level3"){
