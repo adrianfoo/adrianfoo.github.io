@@ -1,0 +1,74 @@
+<html>
+  <head>
+
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@3.2.1/dist/aframe-animation-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-extras.ocean@%5E3.5.x/dist/aframe-extras.ocean.min.js"></script>
+    <script src="https://unpkg.com/aframe-gradient-sky@1.0.4/dist/gradientsky.min.js"></script>
+    <script src="https://unpkg.com/aframe-extras.tube@%5E3.5.x/dist/aframe-extras.tube.min.js"></script>
+    <script src="score.js"></script>
+    <script>
+      var totalScore = 100;
+    </script>
+    <script src="collider-check.js"></script>
+  </head>
+  <body class="a-body ">
+    
+    <a-scene id="gamescene" collider-check-game>
+      <a-assets>
+        <a-asset-item id="car1-obj" src="assets/obj/veh_car1.obj"></a-asset-item>
+        <a-asset-item id="car1-mtl" src="assets/obj/veh_car1.mtl"></a-asset-item>
+        <a-asset-item id="car2-obj" src="assets/obj/veh_car2.obj"></a-asset-item>
+        <a-asset-item id="car2-mtl" src="assets/obj/veh_car2.mtl"></a-asset-item>
+        <a-asset-item id="chr-obj" src="assets/obj/chr_sports1.obj"></a-asset-item>
+        <a-asset-item id="chr-mtl" src="assets/obj/chr_sports1.mtl"></a-asset-item>
+        <a-asset-item id="driveway1-obj" src="assets/obj/obj_driveway3.obj"></a-asset-item>
+        <a-asset-item id="driveway1-mtl" src="assets/obj/obj_driveway3.mtl"></a-asset-item>
+        <a-asset-item id="sidewalk1-obj" src="assets/obj/obj_sidewalk1.obj"></a-asset-item>
+        <a-asset-item id="sidewalk1-mtl" src="assets/obj/obj_sidewalk1.mtl"></a-asset-item>
+        <a-asset-item id="base-obj" src="assets/obj/base_street1.obj"></a-asset-item>
+        <a-asset-item id="base-mtl" src="assets/obj/base_street1.mtl"></a-asset-item>
+      </a-assets> 
+      
+      <a-entity position="8 1.6 17" >
+        <a-camera id="cam" user-height="1.6" wasd-controls="acceleration: 100" look-controls="pointerLockEnabled: true">
+          
+          <a-sphere raycaster="objects: .collidable; far: 0.4" geometry="radius:0.5"></a-sphere>
+          <a-entity id="scoreMsg" position="0 1 -1.5" ></a-entity>
+          <a-entity id="msg1" position="0 0.9 -1.5"></a-entity>
+          <a-entity id="msg2" position="0 0.8 -1.5"></a-entity>
+          
+        </a-camera>
+      </a-entity>
+      
+      
+      <a-entity id="obj-entity1" name="car" class="collidable" position="-2.5 0.5 -30" geometry="primitive: box" rotation="0 180 0" scale="0.2 0.2 0.2" obj-model="obj: #car1-obj; mtl: #car1-mtl" animation="property: position; dir: forward; dur: 5000; to: -2.5 0.5 20; loop: true">
+        <a-entity position="0 15 0" rotation="0 180 0" text="align: center; width: 100; wrapCount: 100; color: black; value: Avoid the Car"></a-entity> 
+      </a-entity> 
+      <a-entity id="obj-entity2" name="car" class="collidable" position="2.5 0.5 -30" geometry="primitive: box" rotation="0 180 0" scale="0.2 0.2 0.2" obj-model="obj: #car2-obj; mtl: #car2-mtl" animation="property: position; dir: forward; dur: 6000; to: 2.5 0.5 20; loop: true">
+        <a-entity position="0 15 0" rotation="0 180 0" text="align: center; width: 100; wrapCount: 100; color: black; value: Avoid the Car"></a-entity> 
+      </a-entity>
+      <a-entity id="obj-entity4" name="car" class="collidable" position="2.5 0.5 -40" geometry="primitive: box" rotation="0 180 0" scale="0.2 0.2 0.2" obj-model="obj: #car2-obj; mtl: #car2-mtl" animation="property: position; dir: forward; dur: 6000; to: 2.5 0.5 10; loop: true">
+        <a-entity position="0 15 0" rotation="0 180 0" text="align: center; width: 100; wrapCount: 100; color: black; value: Avoid the Car"></a-entity> 
+      </a-entity>
+      <a-entity id="obj-entity3" name="person" class="collidable" position="7 0.55 -30" geometry="primitive: box" rotation="0 0 0" scale="0.15 0.15 0.15" obj-model="obj: #chr-obj; mtl: #chr-mtl" animation="property: position; dir: forward; dur: 30000; to: 9 0.55 20; loop: true">
+        <a-entity position="0 15 0" text="align: center; width: 100; wrapCount: 100; color: black; value: Don't hit him!!!"></a-entity> 
+      </a-entity> 
+      <a-entity id="obj-entity5" name="person" class="collidable" position="9 0.55 -30" geometry="primitive: box" rotation="0 0 0" scale="0.15 0.15 0.15" obj-model="obj: #chr-obj; mtl: #chr-mtl" animation="property: position; dir: forward; dur: 20000; to: 7 0.55 20; loop: true">
+        <a-entity position="0 15 0" text="align: center; width: 100; wrapCount: 100; color: black; value: Don't hit him!!!"></a-entity> 
+      </a-entity> 
+      <a-cylinder position="8 1 -27" id="clear" class="collidable" height="3" radius="1.5" material="color: cyan; opacity: 0.2;">
+        <a-entity position="0 3 0" text="align: center; width: 50; wrapCount: 100; color: black; value: End Point"></a-entity>
+      </a-cylinder>
+      <a-plane position="8 0.5 -4" rotation="0 0 0" scale="0.3 0.1 3.6" obj-model="obj: #sidewalk1-obj; mtl: #sidewalk1-mtl"></a-plane>
+      <a-plane position="0 0 -4" rotation="0 90 0" scale="1 0.5 0.5" obj-model="obj: #base-obj; mtl: #base-mtl">
+        <a-entity position="20 15 0" rotation="0 270 0" text="align: center; width: 100; wrapCount: 100; color: black; value: Stay clear of road!"></a-entity>
+      </a-plane>
+      
+      <a-sky color="#ECECEC" material="" geometry=""></a-sky>
+    </a-scene>
+    
+    <script src="scene1.js"></script>
+  </body>
+</html>

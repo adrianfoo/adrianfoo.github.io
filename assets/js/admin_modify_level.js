@@ -24,8 +24,8 @@ function modify_Game_environment(){
     }else if(environmentvalue=="night_time"){
         environment.selectedIndex=1;
     }
-    localStorage.setItem("modified_pedestrian_no", noOfPedvalue);
-    localStorage.setItem("modified_vehicle_no", noOfVehvalue);
-    localStorage.setItem("modified_environment", environmentvalue);
+    sessionStorage.setItem("modified_pedestrian_no", noOfPedvalue);
+    sessionStorage.setItem("modified_vehicle_no", noOfVehvalue);
+    sessionStorage.setItem("modified_environment", environmentvalue);
     alert("Game State Saved!\n");
 }
