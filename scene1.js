@@ -43,7 +43,39 @@ cam.addEventListener('componentchanged', function (evt) {
     return; 
 });
 
+var msgInterval;
+var rmd_msg = document.querySelector("#rmd");
+var rmd = ["Remember to check your tire presure!", "Ring bell only when necessary!", "Always keep left!"];
+var count = 1;
+rmd_msg.setAttribute('text', {
+                width:3,
+                wrapCount:100,
+                color:'black',
+                value: rmd[0]
+                });
 
+msgInterval= setInterval(function(){
+                if(count < 3){
+                  rmd_msg.setAttribute('text', {
+                  width:3,
+                  wrapCount:100,
+                  color:'black',
+                  value:rmd[count]
+                  });
+                  count++;
+                }
+                else{
+                  count = 1;
+                  rmd_msg.setAttribute('text', {
+                  width:3,
+                  wrapCount:100,
+                  color:'black',
+                  value:rmd[0]
+                  });
+                }
+  
+                
+              }, 5000);
 
 
 
