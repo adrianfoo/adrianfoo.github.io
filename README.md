@@ -9,7 +9,7 @@ Virtual Reality can be played using computer with keyboards and mouse for moveme
 It can also be played by clicking the link on a mobile phone and slotting it into a Google Cardboard Glasses.
 (Mobile phone needs to be connected to a keyboard in order to move.)
 
-Video of Gameplay: <b><a href="www.youtube.com"> >> Video<< </a></b>
+Video of Gameplay: <b><a href="https://youtu.be/hOtEkcEMO98"> >> Video<< </a></b>
 
 ## Player Basic Control 
 Movement Control
