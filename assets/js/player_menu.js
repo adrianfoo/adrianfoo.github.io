@@ -17,6 +17,11 @@ function navigate_Setting(){
 function navigate_home(){
     window.location = "player_menu.html"; // Redirecting to home
 }
+	
+function navigate_home_save(){
+	alert("Setting Saved!");
+	window.location = "player_menu.html"; // Redirecting to home
+}
 
 function navigate_game(){
     var level_select_html = document.getElementById("player_level_Selected");
