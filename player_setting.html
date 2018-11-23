@@ -14,7 +14,6 @@
         <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="assets/css/form-elements.css">
         <link rel="stylesheet" href="assets/css/style.css">
-        <link href="assets/css/volume_controller.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Favicon and touch icons -->
         <link rel="shortcut icon" href="assets/ico/favicon.png">
@@ -35,7 +34,7 @@
                             <div class="form-top">
                                 <div class="form-top-left">
                                     <h3>Setting</h3>
-                                    <p>Edit Screen Brightness & Volume here!</p>
+                                    <p>Edit Screen Brightness & Volume below!</p>
                                 </div>
                                 <div class="form-top-right">
                                     <span class="glyphicon glyphicon-cog" style="font-size:24px" ></span>
@@ -48,31 +47,34 @@
                                     </video>
                                     <h3><u>Volume: </u></h3>
                                     <div class="row">
-                                        <div class="column">
-                                            <i class="fa fa-volume-down" style="font-size:24px;width:100%;"></i>
+                                        <div class="col-xs-2 col-sm-2">
+                                            <i class="fa fa-volume-down" style="font-size:24px;"></i>
                                         </div>
-                                        <div class="column">
-                                            <input id="vol-control" style="width:100%" type="range" min="0" max="100" value="50" step="1"></input>
+                                        <div class="col-xs-8 col-sm-8">
+                                            <input id="vol-control" type="range" min="0" max="100" value="50" step="1"></input>
                                         </div>
-                                        <div class="column">
-                                            <i class="fa fa-volume-up" style="font-size:24px;width:100%;"></i>
+                                        <div class="col-xs-2 col-sm-2">
+                                            <i class="fa fa-volume-up" style="font-size:24px;"></i>
                                         </div>
                                     </div>
                                     <br>
                                     <h3><u>Screen Brightness:</u><br></h3>
                                     <div class="row">
-                                        <div class="column">
+                                        <div class="col-xs-2 col-sm-2">
                                             <i class="material-icons">brightness_low</i>
                                         </div>
-                                        <div class="column">
+                                        <div class="col-xs-8 col-sm-8">
                                             <input type="range" id="opacity-slider" min="0.4" max="1" step="0.01" value="0.7">
                                         </div>
-                                        <div class="column">
+                                        <div class="col-xs-2 col-sm-2">
                                             <i class="material-icons">brightness_high</i>
                                         </div>
                                     </div>
-                                    <input type="button" value="Back to Main Menu" id="navigate_viewScore" onclick="navigate_home()" class="btn">
-                                    <input type="button" value="Save" id="navigate_Setting" onclick="navigate_home()" class="btn">
+									<div class="row">
+										<br>
+										<input type="button" value="Back to Main Menu" id="navigate_viewScore" onclick="navigate_home()" class="btn">
+										<input type="button" value="Save" id="save_setting_go_home" onclick="navigate_home_save()" class="btn">
+									</div>
                                 </form>
                             </div>
                         </div>
