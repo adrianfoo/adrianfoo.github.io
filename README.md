@@ -32,10 +32,7 @@ Web Browser Mode:
 
 ## Screenshots
 <img src="./assets/images/screenshots.gif" />
-* https://raw.githubusercontent.com/kfarr/aframe-city-builder/master/assets/images/screenshot1.png
-* https://raw.githubusercontent.com/kfarr/aframe-city-builder/master/assets/images/screenshot2.png
-* https://raw.githubusercontent.com/kfarr/aframe-city-builder/master/assets/images/screenshot3.png
-* https://raw.githubusercontent.com/kfarr/aframe-city-builder/master/assets/images/screenshot4.png
+
 
 ## Scores
 Every player starts off with 100 points in every scenario. Every time the player breaks a rule in the game, the points will be deducted.
