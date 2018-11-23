@@ -7,36 +7,25 @@ var cam = document.querySelector('#cam');
 
 var pos = cam.getAttribute('position');
 cam.addEventListener('componentchanged', function (evt) {
-  //console.log('CAMERA x/y/z:', pos.x, pos.y, pos.z);
+  //console.log('CAMERA x/y:', pos.x, pos.y);
   if(pos.x < -2){
     msg.setAttribute('text', {
       align:'center',
       width:3,
       wrapCount:100,
       color:'red',
-      value:'Stay on the path'
+      value:'Stay on path'
     });
     totalScore -= 1;
     updateScore(totalScore);
   }
-  else if((pos.x > 2 && pos.x < 14) && (pos.z > -18.5 || pos.z < -22.5)){
+  else if(pos.x > 2){
     msg.setAttribute('text', {
       align:'center',
       width:3,
       wrapCount:100,
       color:'red',
-      value:'Stay on the path'
-    });
-    totalScore -= 1;
-    updateScore(totalScore);
-  }
-  else if(pos.x > 18){
-    msg.setAttribute('text', {
-      align:'center',
-      width:3,
-      wrapCount:100,
-      color:'red',
-      value:'Stay on the path'
+      value:'Stay on path'
     });
     totalScore -= 1;
     updateScore(totalScore);
@@ -57,21 +46,21 @@ cam.addEventListener('componentchanged', function (evt) {
 
 var msgInterval;
 var rmd_msg = document.querySelector("#rmd");
-var rmd = ["Remember to check your tire presure!", "Ring bell only when necessary!", "Always keep left!"];
+var rmd = ["Remember to check front and back lights!", "Use the front and back light when it's dark", "Always keep left!", "Remember to check tire pressure!"];
 var count = 1;
 rmd_msg.setAttribute('text', {
                 width:3,
                 wrapCount:100,
-                color:'black',
+                color:'white',
                 value: rmd[0]
                 });
 
 msgInterval= setInterval(function(){
-                if(count < 3){
+                if(count < 4){
                   rmd_msg.setAttribute('text', {
                   width:3,
                   wrapCount:100,
-                  color:'black',
+                  color:'white',
                   value:rmd[count]
                   });
                   count++;
@@ -81,7 +70,7 @@ msgInterval= setInterval(function(){
                   rmd_msg.setAttribute('text', {
                   width:3,
                   wrapCount:100,
-                  color:'black',
+                  color:'white',
                   value:rmd[0]
                   });
                 }

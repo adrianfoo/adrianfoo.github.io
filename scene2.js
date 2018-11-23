@@ -42,3 +42,38 @@ cam.addEventListener('componentchanged', function (evt) {
   }
     return; 
 });
+
+
+var msgInterval;
+var rmd_msg = document.querySelector("#rmd");
+var rmd = ["Remember to check front and back lights!", "Use the front and back light when it's dark", "Always keep left!", "Remember to check tire pressure!"];
+var count = 1;
+rmd_msg.setAttribute('text', {
+                width:3,
+                wrapCount:100,
+                color:'white',
+                value: rmd[0]
+                });
+
+msgInterval= setInterval(function(){
+                if(count < 4){
+                  rmd_msg.setAttribute('text', {
+                  width:3,
+                  wrapCount:100,
+                  color:'white',
+                  value:rmd[count]
+                  });
+                  count++;
+                }
+                else{
+                  count = 1;
+                  rmd_msg.setAttribute('text', {
+                  width:3,
+                  wrapCount:100,
+                  color:'white',
+                  value:rmd[0]
+                  });
+                }
+  
+                
+              }, 5000);
