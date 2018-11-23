@@ -3,26 +3,38 @@
 
     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
     <script>
-      
       AFRAME.registerComponent('collider-check-over', {
         init: function() {
           var material;
+          var selectTimeOut;
           this.el.addEventListener('raycaster-intersected', function(e) {
-            console.log("player collided " + e.target.id);
             material = e.target.getAttribute('material');
             e.target.setAttribute('material', {
               color: 'green',
               shader: 'flat'
             });
             
-          });
-          this.el.addEventListener('raycaster-intersected-cleared', function(e) {
-            console.log("player left");
-            e.target.setAttribute('material', material);
+            selectTimeOut = setTimeout(function(){
+                if(e.target.id == "retry"){
+                  var scene = sessionStorage.getItem("scene");
+                  sessionStorage.setItem("scene", "");
+                  window.location.href = scene;
+                }
+                else if(e.target.id == "back"){
+                  sessionStorage.setItem("scene", "");
+                  window.location.href = "player_menu.html";
+                }
+              }, 3000);
             
           });
-        }
+          this.el.addEventListener('raycaster-intersected-cleared', function(e) {
+              console.log("player left");
+              e.target.setAttribute('material', material);
+              clearTimeout(selectTimeOut);
+          });
+        }  
       });
+      
     </script>
   </head>
   <body class="a-body ">
@@ -31,17 +43,18 @@
       <a-entity position="0 0 0">
         <a-camera user-height="1.6" wasd-controls-enabled="false" look-controls="pointerLockEnabled: true">
           <a-sphere raycaster="objects: .collidable" geometry="radius:0.1"></a-sphere>
-          <a-cursor color ="white" ></a-cursor>    
+          <a-cursor position="0 0 -0.1" color ="white" fuse="true" fuse-timeout="1500" ></a-cursor>    
         </a-camera>
       </a-entity>
       
       <a-entity position="0 0.3 -0.7" text="align: center; width: 10; wrapCount: 100; color: red; value: GAMEOVER"></a-entity> 
-      <a-box id="retry" class="collidable" position="-0.2 0.1 -0.7" scale="0.2 0.15 0.1" rotation="0 0 0"  material="color: yellow; shader: flat;">
+      <a-box id="retry" class="collidable" position="-0.2 0.1 -0.7" scale="0.2 0.15 0.1" rotation="0 0 0"  material="color: yellow; shader: flat;" >
         <a-entity text="align: center; width: 20; wrapCount: 100; color: black; value: Retry" position="0 0 0.5"></a-entity>
       </a-box>
-      <a-box id="back" class="collidable" position="0.2 0.1 -0.7" scale="0.2 0.15 0.1" rotation="0 0 0" material="color: red; shader: flat;">
+      <a-box id="back" class="collidable" position="0.2 0.1 -0.7" scale="0.2 0.15 0.1" rotation="0 0 0" material="color: red; shader: flat;" >
         <a-entity text="align: center; width: 20; wrapCount: 100; color: black; value: Back" position="0 0 0.5"></a-entity>
       </a-box>
+      <a-entity position="0 -0.1 -0.7" text="align: center; width: 2; wrapCount: 100; color: red; value: point at an option for 3 seconds to select"></a-entity> 
 
       <a-sky color="black" material="" geometry=""></a-sky>
     </a-scene>
