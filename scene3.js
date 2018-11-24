@@ -57,24 +57,36 @@ cam.addEventListener('componentchanged', function (evt) {
 
 var msgInterval;
 var rmd_msg = document.querySelector("#rmd");
-var rmd = ["Remember to check your tire presure!", "Ring bell only when necessary!", "Always keep left!"];
+var grmd = ["Remember to check your tire presure!", "Ring bell only when necessary!", "Always keep left!", "Good job!", "Keep up the good work"];
+var brmd = ["Remember to check your tire presure!", "Ring bell only when necessary!", "Always keep left!", "You can do better!", "Be more careful!"];
 var count = 1;
 rmd_msg.setAttribute('text', {
                 width:3,
                 wrapCount:100,
                 color:'black',
-                value: rmd[0]
+                value: grmd[0]
                 });
 
 msgInterval= setInterval(function(){
-                if(count < 3){
-                  rmd_msg.setAttribute('text', {
-                  width:3,
-                  wrapCount:100,
-                  color:'black',
-                  value:rmd[count]
-                  });
-                  count++;
+                if(count < 5){
+                  if(totalScore > 80){
+                    rmd_msg.setAttribute('text', {
+                    width:3,
+                    wrapCount:100,
+                    color:'black',
+                    value:grmd[count]
+                    });
+                    count++;
+                   }
+                  else{
+                    rmd_msg.setAttribute('text', {
+                    width:3,
+                    wrapCount:100,
+                    color:'black',
+                    value:brmd[count]
+                    });
+                    count++;
+                  }
                 }
                 else{
                   count = 1;
@@ -82,7 +94,7 @@ msgInterval= setInterval(function(){
                   width:3,
                   wrapCount:100,
                   color:'black',
-                  value:rmd[0]
+                  value:grmd[0]
                   });
                 }
   

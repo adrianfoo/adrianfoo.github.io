@@ -46,24 +46,36 @@ cam.addEventListener('componentchanged', function (evt) {
 
 var msgInterval;
 var rmd_msg = document.querySelector("#rmd");
-var rmd = ["Remember to check front and back lights!", "Use the front and back light when it's dark", "Always keep left!", "Remember to check tire pressure!"];
+var grmd = ["Remember to check front and back lights!", "Use the front and back light when it's dark", "Always keep left!", "Remember to check tire pressure!", "Good job!", "Keep up the good work"];
+var brmd = ["Remember to check front and back lights!", "Use the front and back light when it's dark", "Always keep left!", "Remember to check tire pressure!", "You can do better!", "Be more careful!"];
 var count = 1;
 rmd_msg.setAttribute('text', {
                 width:3,
                 wrapCount:100,
                 color:'white',
-                value: rmd[0]
+                value: grmd[0]
                 });
 
 msgInterval= setInterval(function(){
-                if(count < 4){
-                  rmd_msg.setAttribute('text', {
-                  width:3,
-                  wrapCount:100,
-                  color:'white',
-                  value:rmd[count]
-                  });
-                  count++;
+                if(count < 6){
+                  if(totalScore > 80){
+                    rmd_msg.setAttribute('text', {
+                    width:3,
+                    wrapCount:100,
+                    color:'white',
+                    value:grmd[count]
+                    });
+                    count++;
+                   }
+                  else{
+                    rmd_msg.setAttribute('text', {
+                    width:3,
+                    wrapCount:100,
+                    color:'white',
+                    value:brmd[count]
+                    });
+                    count++;
+                  }
                 }
                 else{
                   count = 1;
@@ -71,7 +83,7 @@ msgInterval= setInterval(function(){
                   width:3,
                   wrapCount:100,
                   color:'white',
-                  value:rmd[0]
+                  value:grmd[0]
                   });
                 }
   
